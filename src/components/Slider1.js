@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TodayTrend from "../api/TodayTrend";
 import { useEffect, useState } from "react";
+import Banner from '../image/banner.jpg'; 
 
 
 
@@ -39,23 +40,22 @@ const Slider1 = () => {
         return <div>{error}</div>;
      }
 
- return (
-      <Slider {...settings} >
-      {/* { {trend?.results?.map((movie) => (
-            <Card className="banner"  key={movie.id}
-            component="li">
-             <CardMedia 
-        component="img"
-        image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-        alt="hello"  
-    />
-          </Card> }
-          
-               
-           ))} */}
-         <img src="../images/movie-trendy-banner-vector.jpg" alt="hello" /> 
-        </Slider>
- )
+return (
+   <div style={{ display: "flex", justifyContent: "center" }}>
+      <img src={Banner} alt="banner" width={'80%'} />
+   </div>
+   // {/* {trend?.results?.map((movie) => (
+   //    <Card className="banner" key={movie.id} component="li">
+   //       <CardMedia
+   //          component="img"
+   //          image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+   //          alt="hello"
+   //       />
+   //    </Card>
+   // ))} */}
+   // <img src={Banner} alt="banner" />
+   // </Slider>
+)
 }
 export default Slider1;
 

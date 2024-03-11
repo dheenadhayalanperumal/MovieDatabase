@@ -7,6 +7,7 @@ import Slider1 from './components/Slider1';
 
 
 
+
 function App() {
   return (
     <div className="App">
