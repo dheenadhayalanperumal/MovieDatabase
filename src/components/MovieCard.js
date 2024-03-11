@@ -20,7 +20,7 @@ const MovieCard = (props) => {
         />
          <CardContent sx={{height:'auto', textWrap:'break-word'}}>
           <Typography gutterBottom variant="h5" component="div">
-          {props.data.title}
+          {props.data.title || props.data.original_name}
           </Typography>
           <Typography variant="body2">
           <FaRegStar /> {props.data.vote_average} ({props.data.vote_count} )

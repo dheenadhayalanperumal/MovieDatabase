@@ -6,6 +6,7 @@ import fetchData from "../api/Apicall";
 import CircularProgress from "@mui/material/CircularProgress";
 import PopularMovie from "../api/Popular";
 import { Divider } from "@mui/material";
+import { Typography } from "@mui/material";
 import "../App.css";
 
 const Fetch = () => {
@@ -17,16 +18,15 @@ const Fetch = () => {
   useEffect(() => {
     setLoading(true);
     fetchData()
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        setError("An error occurred while fetching data");
-        setLoading(false);
-      });
-  });
+        .then((response) => {
+            setData(response.data);
+            setLoading(false);
+        })
+        .catch((error) => {
+            setError("An error occurred while fetching data");
+            setLoading(false);
+        });
+}, []);
 
   useEffect(() => {
     const addEventListeners = (id) => {
@@ -69,7 +69,7 @@ const Fetch = () => {
       .then((response) => {
         setPopular(response.data);
 
-        console.log(response.data);
+        // console.log(response.data);
       })
       .catch((error) => {
         setError("An error occurred while fetching data");
@@ -94,9 +94,10 @@ const Fetch = () => {
     <div>
       <Stack direction="column">
         <div>
-          <h2 className="title">
-            Now Playing Movies
-          </h2>
+        <Typography>
+        <h2 className="title"> Now Playing Movies</h2>
+      </Typography>
+         
           <div id="scrollableNowPlaying" className="scroll">
             {data?.results?.map((movie) => (
               <div className="cardMovie" key={movie.id}>
@@ -109,9 +110,9 @@ const Fetch = () => {
         <Divider />
 
         <div>
-          <h2 className="title">
-            Popular Movies 
-          </h2>
+        <Typography>
+        <h2 className="title"> Popular Movies </h2>
+      </Typography>
           <div id="scrollablePopular" className="scroll">
             {popular?.results?.map((movie) => (
               <div className="cardMovie" key={movie.id}>

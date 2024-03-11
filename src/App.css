@@ -74,6 +74,7 @@ form {
 .cardMovie {
   flex: 0 auto;
   width: 300px;
+  height: auto;
   
 }
 
@@ -96,5 +97,22 @@ form {
     scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
     flex-wrap: nowrap;
     scroll-behavior: smooth; 
+
+    
 }
+}
+
+
+
+.banner {
+  position: relative;
+  height: 480px;
+  background-position: center;
+  color: white;
+  background-color: #151414;
+  box-shadow: 10px 5px 5px rgb(108, 108, 109);
+  margin-bottom: 1rem;
+  text-align: center;
+
+  
 }
