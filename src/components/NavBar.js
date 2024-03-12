@@ -16,25 +16,19 @@ const NavBar = () => {
     console.log(search); // Replace this with your search function
   };
 
-  return (
+return (
     <nav>
-        <div className="nav">
-            <a href="index.html" className="brand-logo">IMDB</a>
-            <ul id="navbar">
-                <li><a className="active" href="sass.html">Movies</a></li>
-                <li><a href="badges.html">TV Shows</a></li>
-                <li><a href="collapsible.html">Celebrities</a></li>
-            </ul>
-            <div id="mobile">
-                <FontAwesomeIcon icon={showMenu ? "fas fa-times" : "fas fa-bars"} onClick={() => setShowMenu(!showMenu)} />
+            <div className="nav">
+                    <a href="index.html" className="brand-logo">
+                            <img src="https://www.freepnglogos.com//uploads/netflix-logo-0.png" alt="IMDb" width={140} height={45} />
+                    </a>
+                    <ul id="navbar">
+                            <li><a className="active" href="sass.html">Movies</a></li>
+                            <li><a href="badges.html">TV Shows</a></li>
+                            <li><a href="collapsible.html">Web Series</a></li>
+                    </ul>
+                    
             </div>
-            <form onSubmit={handleSearchSubmit}>
-                <input type="text" value={search} onChange={handleSearchChange} placeholder="Search..." />
-            </form>
-            <button onClick={() => setShowMenu(!showMenu)}>
-                {showMenu ? 'Close menu' : 'Open menu'}
-            </button>
-        </div>
     </nav>
 );
 }

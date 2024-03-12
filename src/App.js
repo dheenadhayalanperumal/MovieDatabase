@@ -1,9 +1,13 @@
 import React from 'react';
-import Fetch from './components/Fetch';
+import PopularMov from './components/PopularMov';
 import NavBar from './components/NavBar';
 import Trend from './components/Trend';
 import { Divider} from '@mui/material';
 import Slider1 from './components/Slider1';
+import Moviedetails from './components/Moviedetails';
+import { Provider } from 'react-redux';
+import store from './store';
+import NowPlay from './components/NowPlaying';
 
 
 
@@ -11,11 +15,17 @@ import Slider1 from './components/Slider1';
 function App() {
   return (
     <div className="App">
+      <Provider store={store}>
       <NavBar />
       <Slider1 />  
     <Trend />
     <Divider />
-      <Fetch />
+    <PopularMov />
+    <Divider />
+      <NowPlay />
+      <Divider />
+      <Moviedetails />
+      </Provider>
     </div>
   );
 }

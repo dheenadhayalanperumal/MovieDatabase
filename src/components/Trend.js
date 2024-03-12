@@ -3,12 +3,25 @@ import TodayTrend  from "../api/TodayTrend";
 import MovieCard from "./MovieCard";
 import { useEffect, useState} from "react"; 
 import { Typography } from "@mui/material";
+import { useDispatch } from 'react-redux';
 
 const Trend = () => {
     
     // const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [trend, setTreand] = useState([]);
+
+    
+
+
+  const dispatch = useDispatch();
+
+  const handleMovieClick = (id) => {
+    dispatch({ type: 'SET_MOVIE_ID', payload: id });
+  };
+
+
+
 
   useEffect(() => {
     
@@ -63,18 +76,7 @@ const Trend = () => {
   }
 
     return (
-        // <div>
-          
-    
-        //   <div id="Trend" className="scroll">
-        //     {trend?.results?.map((movie) => (
-        //       <div className="cardMovie" key={movie.id}>
-        //         <MovieCard  data={movie} />
-        //       </div>
-        //     ))}
-        //   </div>
-        
-        // </div>
+     
         <div>
         <Typography>
         <h2 className="title"> Today Trend </h2>
@@ -82,7 +84,7 @@ const Trend = () => {
           <div id="Trend" className="scroll">
             {trend?.results?.map((movie) => (
               <div className="cardMovie" key={movie.id}>
-                <MovieCard  data={movie} />
+                <MovieCard  data={movie} onClick={handleMovieClick} />
               </div>
             ))}
           </div>

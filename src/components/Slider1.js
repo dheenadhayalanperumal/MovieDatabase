@@ -42,7 +42,7 @@ const Slider1 = () => {
 
 return (
    <div style={{ display: "flex", justifyContent: "center" }}>
-      <img src={Banner} alt="banner" width={'80%'} />
+      <img src={Banner} alt="banner" width={'100%'} />
    </div>
    // {/* {trend?.results?.map((movie) => (
    //    <Card className="banner" key={movie.id} component="li">
