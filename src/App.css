@@ -1,5 +1,6 @@
 .App{
-background-color: #272525;
+background-color: #121212;
+padding: 0 104px;
 }
 
 .loading{
@@ -14,20 +15,24 @@ background-color: #272525;
     z-index: 100;
 }
 .title{
-    font-size: 2rem;
-    font-weight: 500;
-    margin: 1rem 0;
-    color: #ffffff;
+  font-size: 24px;
+    font-weight: 600;
+    margin: 0rem 0;
     border-radius: 5px;
     text-align: center;
+}
+.brand-logo img{
+width: 123px;
+height: 50px;
 }
 
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around; 
   align-items: center;
-padding: 10px 10px;
-  background-color: rgb(39, 36, 36);
+  height: 80px;
+  width: 100%;
+  /* margin-left:119px; */
 }
 .nav ul {
   display: flex;
@@ -38,7 +43,7 @@ padding: 10px 10px;
 }
 .nav ul li a {
   text-decoration: none;
-  color: #ffffff;
+  color: #8D8D8D;
   font-size: 1.2rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
@@ -48,6 +53,8 @@ padding: 10px 10px;
 
 #navbar {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -68,7 +75,7 @@ form {
   .scroll {
     display: flex;
     overflow-x: auto;
-    gap: 10px;
+    column-gap: 10px;
     width: 100%;
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
@@ -104,12 +111,18 @@ form {
       margin: 5px 0;
      
   }
+
+  .App{
+    background-color: #121212;
+    padding: 0 10px;
+    }
+    
   .scroll {
     display: flex;
     overflow-x: auto;
-    gap: 20px;
+    gap: 10px;
     width: 100%;
-    flex-grow: 1;
+    /* flex-grow: 1; */
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
@@ -119,6 +132,18 @@ form {
 
     
 }
+.brand-logo img{
+  width: 61.5px;
+  height: 25px;
+  }
+  .nav {
+    display: flex;
+    justify-content: left; 
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    /* margin-left:119px; */
+  }
 }
 
 
@@ -167,4 +192,11 @@ form {
   right: 0;
   bottom: 0;
   opacity: 0.5; 
+}
+.seeall{
+  display: flex;
+  color: #8D8D8D;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
 }

@@ -70,9 +70,16 @@ const PopularMov = () => {
 
   return (
     <div>
+
+<div className="seeall">
+        <div>
       <Typography>
-        <h2 className="title"> Popular Movies </h2>
+        <h6 className="title"> Popular Movies</h6>
       </Typography>
+      </div>
+      <div><p>See All</p></div>
+      </div>
+     
       <div id="scrollablePopular" className="scroll">
         {data?.results?.map((movie) => (
           <div className="cardMovie" key={movie.id}>

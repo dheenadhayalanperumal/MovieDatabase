@@ -3,7 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TodayTrend from "../api/TodayTrend";
 import { useEffect, useState } from "react";
-import Banner from '../image/banner.jpg'; 
+import Banner from '../image/banner.png'; 
 
 
 
@@ -42,7 +42,7 @@ const Slider1 = () => {
 
 return (
    <div style={{ display: "flex", justifyContent: "center" }}>
-      <img src={Banner} alt="banner" width={'100%'} />
+      <img src={Banner} alt="banner" width={'100%'} height={"100%"} />
    </div>
    // {/* {trend?.results?.map((movie) => (
    //    <Card className="banner" key={movie.id} component="li">

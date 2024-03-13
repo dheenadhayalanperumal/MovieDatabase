@@ -73,9 +73,14 @@ const NowPlay = () => {
 
   return (
     <div>
+      <div className="seeall">
+        <div>
       <Typography>
-        <h2 className="title"> Now Playing Movies</h2>
+        <h6 className="title"> Now Playing Movies</h6>
       </Typography>
+      </div>
+      <div><p>See All</p></div>
+      </div>
 
       <div id="scrollableNowPlaying" className="scroll">
         {data?.results?.map((movie) => (

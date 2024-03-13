@@ -78,9 +78,15 @@ const Trend = () => {
     return (
      
         <div>
-        <Typography>
-        <h2 className="title"> Today Trend </h2>
+          <div className="seeall">
+        <div>
+      <Typography>
+        <h6 className="title">Today Trend</h6>
       </Typography>
+      </div>
+      <div><p>See All</p></div>
+      </div>
+        
           <div id="Trend" className="scroll">
             {trend?.results?.map((movie) => (
               <div className="cardMovie" key={movie.id}>
