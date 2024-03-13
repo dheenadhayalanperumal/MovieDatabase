@@ -8,6 +8,7 @@ import Moviedetails from './components/Moviedetails';
 import { Provider } from 'react-redux';
 import store from './store';
 import NowPlay from './components/NowPlaying';
+import Skeleton from '@mui/material/Skeleton';
 
 
 
@@ -26,7 +27,7 @@ function App() {
       <Divider />
       <Moviedetails />
       </Provider>
-    </div>
+       </div>
   );
 }
 

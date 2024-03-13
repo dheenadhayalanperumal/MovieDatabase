@@ -4,9 +4,14 @@ import MovieCard from "./MovieCard";
 import fetchData from "../api/Apicall";
 import { Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
+import Slider from "react-slick";
 import "../App.css";
 
+
+
 const NowPlay = () => {
+  const [slidesToShow, setSlidesToShow] = useState(6);
+
   const [data, setData] = useState([]);
 
   const [error, setError] = useState(null);
@@ -17,6 +22,20 @@ const NowPlay = () => {
     dispatch({ type: 'SET_MOVIE_ID', payload: id });
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesToShow(Math.floor(window.innerWidth / 192)); // 200 is approx width of a slide
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    handleResize(); // Call the function initially to set the state based on the initial window size
+
+    return () => window.removeEventListener('resize', handleResize); // Clean up the event listener on unmount
+  }, []);
+
+
+ 
 
   useEffect(() => {
    
@@ -81,14 +100,18 @@ const NowPlay = () => {
       </div>
       <div><p>See All</p></div>
       </div>
+    
 
       <div id="scrollableNowPlaying" className="scroll">
+        
         {data?.results?.map((movie) => (
           <div className="cardMovie" key={movie.id}>
             <MovieCard data={movie} onClick={handleMovieClick}/>
           </div>
-        ))}
+          ))}
+       
       </div>
+     
     </div>
   );
 };

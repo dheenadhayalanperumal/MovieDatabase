@@ -18,7 +18,7 @@ const MovieCard = ({ data, onClick }) => {
                         alt="green iguana"
                     />
                     <CardContent sx={{ backgroundColor: 'black',color:'white', height: 'auto', textWrap: 'break-word' }}>
-                        <Typography gutterBottom variant="h7" component="div">
+                        <Typography gutterBottom variant="h7" component="div"  sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                             {data.title || data.original_name}
                         </Typography>
                         <Typography variant="body1" sx={{color:'#8D8D8D'}}>

@@ -1,3 +1,5 @@
+
+
 .App{
 background-color: #121212;
 padding: 0 104px;
@@ -133,6 +135,10 @@ form {
     width: 10%;
     height: 50%;
   }
+  .App{
+    background-color: #121212;
+    padding: 0 10px;
+    }
 }
 
 @media (max-width: 780px) {

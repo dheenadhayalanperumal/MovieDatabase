@@ -3,60 +3,81 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TodayTrend from "../api/TodayTrend";
 import { useEffect, useState } from "react";
-import Banner from '../image/banner.png'; 
-import bannercontent from '../image/bannerContent.png';
-import play from '../image/play.png';
+import Banner from "../image/banner.png";
+import bannercontent from "../image/bannerContent.png";
+import play from "../image/play.png";
 import { Typography } from "@mui/material";
-
+import { IconButton } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 
 const settings = {
-   dots: true,
-   infinite: true,
-   speed: 500,
-   slidesToShow: 1,
-   slidesToScroll: 1,
-   centerMode: true,
-   variableWidth: true,
-   swipeToSlide: true,
-   edgeFriction: 0.15,
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  centerMode: true,
+  variableWidth: true,
+  swipeToSlide: true,
+  edgeFriction: 0.15,
 };
 
 const Slider1 = () => {
-   const [trend, setTreand] = useState([]);
-   const [error, setError] = useState(null);
+  const [trend, setTreand] = useState([]);
+  const [error, setError] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
+  useEffect(() => {
+    TodayTrend()
+      .then((response) => {
+        setTreand(response.data);
+        console.log(response.data);
+      })
+      .catch(() => {
+        setError("An error occurred while fetching data");
+      });
+  }, []);
 
-      useEffect(() => {
-        TodayTrend()
-           .then((response) => {
-              setTreand(response.data);
-              console.log(response.data);
-           })
-           .catch(() => {
-              setError("An error occurred while fetching data");
-           });
-     }, []);
+  if (error) {
+    return <div>{error}</div>;
+  }
 
-     if (error) {
-        return <div>{error}</div>;
-     }
+  const handlePlay = () => {
+   setIsPlaying(true);
+ };
 
-return (
-   <div style={{ display: "flex", justifyContent: "center" , color:'white'}}>
-      <img src={Banner} alt="banner" width={'100%'} height={'100%'} />
+  return (
+    <div style={{ display: "flex", justifyContent: "center", color: "white" }}>
+      <img src={Banner} alt="banner" width={"100%"} height={"100%"} />
       <div className="bannertext">
-         <p>#1 in India</p>
-         <img src={bannercontent} alt="banner" />
-         <div className="play">
-         <img src={play} alt="banner" />   
-      <Typography variant="h6" ml={1} style={{color:'white'}}>Watch Trailer</Typography >
-         </div>
+        <p>#1 in India</p>
+        <img src={bannercontent} alt="banner" />
+        <div className="play">
+          <img id="playBu" onClick={handlePlay} src={play} alt="banner" />
+          <Typography variant="h6" ml={1} style={{ color: "white" }}>
+            Watch Trailer
+          </Typography>
+        </div>
       </div>
-   </div>
- 
-)
-}
+      {isPlaying && (
+      <>
+        <IconButton
+          style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 2, color: 'white' }}
+          onClick={() => setIsPlaying(false)}
+        >
+          <CloseIcon />
+        </IconButton>
+        <iframe
+          style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '720px', zIndex: 1 }}
+          src="https://www.youtube.com/embed/zAGVQLHvwOY?si=QLVEcW6DwV_i28YE"
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        ></iframe>
+      </>
+    )}
+    </div>
+  );
+};
 export default Slider1;
-
-
-
