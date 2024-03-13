@@ -4,8 +4,9 @@ import "slick-carousel/slick/slick-theme.css";
 import TodayTrend from "../api/TodayTrend";
 import { useEffect, useState } from "react";
 import Banner from '../image/banner.png'; 
-
-
+import bannercontent from '../image/bannerContent.png';
+import play from '../image/play.png';
+import { Typography } from "@mui/material";
 
 
 const settings = {
@@ -41,20 +42,18 @@ const Slider1 = () => {
      }
 
 return (
-   <div style={{ display: "flex", justifyContent: "center" }}>
-      <img src={Banner} alt="banner" width={'100%'} height={"100%"} />
+   <div style={{ display: "flex", justifyContent: "center" , color:'white'}}>
+      <img src={Banner} alt="banner" width={'100%'} height={'100%'} />
+      <div className="bannertext">
+         <p>#1 in India</p>
+         <img src={bannercontent} alt="banner" />
+         <div className="play">
+         <img src={play} alt="banner" />   
+      <Typography variant="h6" ml={1} style={{color:'white'}}>Watch Trailer</Typography >
+         </div>
+      </div>
    </div>
-   // {/* {trend?.results?.map((movie) => (
-   //    <Card className="banner" key={movie.id} component="li">
-   //       <CardMedia
-   //          component="img"
-   //          image={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-   //          alt="hello"
-   //       />
-   //    </Card>
-   // ))} */}
-   // <img src={Banner} alt="banner" />
-   // </Slider>
+ 
 )
 }
 export default Slider1;

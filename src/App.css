@@ -57,6 +57,27 @@ height: 50px;
   justify-content: space-between;
   gap: 1rem;
 }
+.bannertext{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  margin: 5% 50% 0% 5%;
+ 
+  align-items: left;
+  gap: 5px;
+/* flex-wrap: wrap; */
+}
+.play{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 10px;
+}
+.play img:hover{
+cursor: pointer;
+color:red
+}
+
 
 form {
   display: flex;
@@ -103,13 +124,38 @@ form {
   height: auto;
   
 }
+@media screen and (max-width: 960px){
+  .bannertext img{
+    width: 75%;
+    height: 75%;
+  }
+  .bannertext .play img{
+    width: 10%;
+    height: 50%;
+  }
+}
 
-@media (max-width: 600px) {
+@media (max-width: 780px) {
   .cardMovie {
       width: auto;
       height:40%;
       margin: 5px 0;
      
+  }
+  .bannertext img{
+    width: 40%;
+    height: 40%;
+  }
+  .bannertext .play img{
+    width: 10%;
+    height: 50%;
+    font-size: 0.5rem;
+  }
+  .bannertext p{
+    margin: 0.1rem 0;
+  }
+  .play{
+    margin-top: 0px;
   }
 
   .App{
@@ -144,6 +190,7 @@ form {
     width: 100%;
     /* margin-left:119px; */
   }
+
 }
 
 
