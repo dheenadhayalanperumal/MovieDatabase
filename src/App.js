@@ -8,7 +8,7 @@ import Moviedetails from './components/Moviedetails';
 import { Provider } from 'react-redux';
 import store from './store';
 import NowPlay from './components/NowPlaying';
-import Skeleton from '@mui/material/Skeleton';
+
 
 
 
@@ -18,14 +18,15 @@ function App() {
     <div className="App">
       <Provider store={store}>
       <NavBar />
-      <Slider1 />  
-    <Trend />
+      {/* <Slider1 />   */}
+      <Moviedetails />
+    {/* <Trend />
     <Divider />
     <PopularMov />
     <Divider />
       <NowPlay />
       <Divider />
-      <Moviedetails />
+      <Moviedetails /> */}
       </Provider>
        </div>
   );

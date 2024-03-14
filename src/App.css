@@ -75,6 +75,10 @@ height: 50px;
   align-items: center;
   margin-top: 10px;
 }
+.play1{
+  position:inherit;
+}
+
 .play img:hover{
 cursor: pointer;
 color:red
@@ -126,80 +130,6 @@ form {
   height: auto;
   
 }
-@media screen and (max-width: 960px){
-  .bannertext img{
-    width: 75%;
-    height: 75%;
-  }
-  .bannertext .play img{
-    width: 10%;
-    height: 50%;
-  }
-  .App{
-    background-color: #121212;
-    padding: 0 10px;
-    }
-}
-
-@media (max-width: 780px) {
-  .cardMovie {
-      width: auto;
-      height:40%;
-      margin: 5px 0;
-     
-  }
-  .bannertext img{
-    width: 40%;
-    height: 40%;
-  }
-  .bannertext .play img{
-    width: 10%;
-    height: 50%;
-    font-size: 0.5rem;
-  }
-  .bannertext p{
-    margin: 0.1rem 0;
-  }
-  .play{
-    margin-top: 0px;
-  }
-
-  .App{
-    background-color: #121212;
-    padding: 0 10px;
-    }
-    
-  .scroll {
-    display: flex;
-    overflow-x: auto;
-    gap: 10px;
-    width: 100%;
-    /* flex-grow: 1; */
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
-    flex-wrap: nowrap;
-    scroll-behavior: smooth; 
-
-    
-}
-.brand-logo img{
-  width: 61.5px;
-  height: 25px;
-  }
-  .nav {
-    display: flex;
-    justify-content: left; 
-    align-items: center;
-    height: 40px;
-    width: 100%;
-    /* margin-left:119px; */
-  }
-
-}
-
-
 
 .banner {
   position: relative;
@@ -253,3 +183,154 @@ form {
   align-items: center;
   padding: 0 1rem;
 }
+.trailer{
+  display: flex;
+  flex-direction: row;
+  width:98%;
+  color: #8D8D8D;
+  align-items: top;
+  justify-content: space-between;
+  /* margin: 24px 0px; */
+} 
+
+.trailer1{
+  display: flex;
+  flex-direction: column;
+  width:64.5%;
+  height: auto;
+  color: #8E8E8E;
+  align-items: top;
+  background-color: #2A2A2B;
+  justify-content: space-between;
+  border-radius: 10px;
+  text-wrap: wrap;
+  margin: 24px 0;
+  padding: 1rem;
+  
+}
+.cast{
+  display: flex;
+  flex-direction: column;
+  width: 80;
+  height: 115px;
+  color: #8D8D8D;
+  justify-content: space-between;
+  margin: 24px 0;
+}
+.heart1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 24px 0;
+  gap : 0.5rem;
+}
+
+@media screen and (max-width: 960px){
+  .trailer{
+    width: 100%;
+  }
+  .trailer1{
+    width: 95%;
+  }
+  .bannertext img{
+    width: 75%;
+    height: 75%;
+  }
+  .bannertext .play img{
+    width: 10%;
+    height: 50%;
+  }
+  .App{
+    background-color: #121212;
+    padding: 0 10px;
+    }
+}
+
+@media (max-width: 780px) {
+  .cardMovie {
+      width: auto;
+      height:40%;
+      margin: 5px 0;
+     
+  }
+  .trailer{
+    display: flex;
+    flex-direction: row;
+    width:100%;
+    height: auto;
+    color: #8D8D8D;
+    align-items: top;
+    justify-content: space-between;
+    margin: 24px 0;
+    margin-right: 20px;
+  } 
+  
+  .trailer1{
+    display: flex;
+    flex-direction: column;
+    width:95%;
+    height: auto;
+    color: #8E8E8E;
+    align-items: top;
+    background-color: #2A2A2B;
+    justify-content: space-between;
+    border-radius: 10px;
+    text-wrap:auto;
+    margin: 24px 0px;
+   
+    
+    
+  }
+  .bannertext img{
+    width: 40%;
+    height: 40%;
+  }
+  .bannertext .play img{
+    width: 10%;
+    height: 50%;
+    font-size: 0.5rem;
+  }
+  .bannertext p{
+    margin: 0.1rem 0;
+  }
+  .play{
+    margin-top: 0px;
+  }
+
+  .App{
+    background-color: #121212;
+    padding: 0 10px;
+    }
+    
+  .scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 10px;
+    width: 100%;
+    /* flex-grow: 1; */
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    scrollbar-color: rgba(155, 155, 155, 0.7) transparent;
+    flex-wrap: nowrap;
+    scroll-behavior: smooth; 
+
+    
+}
+.brand-logo img{
+  width: 61.5px;
+  height: 25px;
+  }
+  .nav {
+    display: flex;
+    justify-content: left; 
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    /* margin-left:119px; */
+  }
+
+}
+
+

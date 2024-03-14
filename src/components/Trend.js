@@ -4,12 +4,16 @@ import MovieCard from "./MovieCard";
 import { useEffect, useState} from "react"; 
 import { Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
+import Skeleton from '@mui/material/Skeleton';
+import Card from '@mui/material/Card';
 
-const Trend = () => {
-    
+
+
+const Trend = () => {   
     // const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [trend, setTreand] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     
 
@@ -24,16 +28,16 @@ const Trend = () => {
 
 
   useEffect(() => {
-    
+    setLoading(true);
     TodayTrend()
-      .then((response) => {
+         .then((response) => {
         setTreand(response.data);
-        
+        setLoading(false);
          console.log(response.data);
       })
       .catch((error) => {
         setError("An error occurred while fetching data");
-       
+        setLoading(false);
       });
   },[]);
 
@@ -94,7 +98,8 @@ const Trend = () => {
               </div>
             ))}
           </div>
-        </div>
+
+          </div>
 
 
 
