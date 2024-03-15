@@ -8,27 +8,33 @@ import Moviedetails from './components/Moviedetails';
 import { Provider } from 'react-redux';
 import store from './store';
 import NowPlay from './components/NowPlaying';
+import Dashboard from './components/Dashboard';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 
 
 
 
 
 function App() {
+
   return (
     <div className="App">
       <Provider store={store}>
-      <NavBar />
-      {/* <Slider1 />   */}
-      <Moviedetails />
-    {/* <Trend />
-    <Divider />
-    <PopularMov />
-    <Divider />
-      <NowPlay />
-      <Divider />
-      <Moviedetails /> */}
+       
+          <NavBar />
+          
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/popular" element={<PopularMov />} />
+            <Route path="/now-playing" element={<NowPlay />} />
+            <Route path="/movie/:id" element={<Moviedetails />} />
+          </Routes>
+         
+          
+      
       </Provider>
-       </div>
+    </div>
   );
 }
 

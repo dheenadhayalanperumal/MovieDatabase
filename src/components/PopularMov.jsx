@@ -1,19 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
-import fetchData from "../api/Apicall";
+import PopularMovie from "../api/Popular";
 import { Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
-import Slider from "react-slick";
 import "../App.css";
+import { Link } from "react-router-dom";
 
-
-
-const NowPlay = () => {
-  const [slidesToShow, setSlidesToShow] = useState(6);
-
+const PopularMov = () => {
   const [data, setData] = useState([]);
-
   const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
@@ -21,33 +16,6 @@ const NowPlay = () => {
   const handleMovieClick = (id) => {
     dispatch({ type: 'SET_MOVIE_ID', payload: id });
   };
-
-  useEffect(() => {
-    const handleResize = () => {
-      setSlidesToShow(Math.floor(window.innerWidth / 192)); // 200 is approx width of a slide
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    handleResize(); // Call the function initially to set the state based on the initial window size
-
-    return () => window.removeEventListener('resize', handleResize); // Clean up the event listener on unmount
-  }, []);
-
-
- 
-
-  useEffect(() => {
-   
-    fetchData()
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        setError("An error occurred while fetching data");
-        
-      });
-  }, []);
 
   useEffect(() => {
     const addEventListeners = (id) => {
@@ -79,9 +47,20 @@ const NowPlay = () => {
       });
     };
 
-    addEventListeners("scrollableNowPlaying");
+    addEventListeners("scrollablePopular");
   }, []);
 
+  useEffect(() => {
+    PopularMovie()
+      .then((response) => {
+        setData(response.data);
+
+        // console.log(response.data);
+      })
+      .catch((error) => {
+        setError("An error occurred while fetching data");
+      });
+  }, []);
   if (error) {
     return (
       <div>
@@ -92,28 +71,27 @@ const NowPlay = () => {
 
   return (
     <div>
-      <div className="seeall">
+
+<div className="seeall">
         <div>
       <Typography>
-        <h6 className="title"> Now Playing Movies</h6>
+        <h6 className="title"> Popular Movies</h6>
       </Typography>
       </div>
       <div><p>See All</p></div>
       </div>
-    
-
-      <div id="scrollableNowPlaying" className="scroll">
-        
-        {data?.results?.map((movie) => (
-          <div className="cardMovie" key={movie.id}>
-            <MovieCard data={movie} onClick={handleMovieClick}/>
-          </div>
-          ))}
-       
-      </div>
      
+      <div id="scrollablePopular" className="scroll">
+        {data?.results?.map((movie) => (
+          <Link to={`/movie/${movie.id}`}>
+          <div className="cardMovie" key={movie.id}>
+            <MovieCard data={movie} onClick={handleMovieClick} />
+          </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
 
-export default NowPlay;
+export default PopularMov;

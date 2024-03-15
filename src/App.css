@@ -1,5 +1,7 @@
 
-
+.scroll a{
+  text-decoration: none;
+}
 .App{
 background-color: #121212;
 padding: 0 104px;
@@ -34,6 +36,7 @@ height: 50px;
   align-items: center;
   height: 80px;
   width: 100%;
+  z-index: 1;
   /* margin-left:119px; */
 }
 .nav ul {
@@ -126,7 +129,7 @@ form {
 
 .cardMovie {
   flex: 0 auto;
-  width: 300px;
+  width: 192px;
   height: auto;
   
 }
@@ -186,36 +189,32 @@ form {
 .trailer{
   display: flex;
   flex-direction: row;
-  width:98%;
   color: #8D8D8D;
   align-items: top;
   justify-content: space-between;
+  margin-top: 24px;
+
   /* margin: 24px 0px; */
 } 
 
-.trailer1{
-  display: flex;
-  flex-direction: column;
-  width:64.5%;
-  height: auto;
-  color: #8E8E8E;
-  align-items: top;
-  background-color: #2A2A2B;
-  justify-content: space-between;
-  border-radius: 10px;
-  text-wrap: wrap;
+
+.movieTr{
+  background-color: #2A2A2B ;
+  padding: 24px;
   margin: 24px 0;
-  padding: 1rem;
-  
+  border-radius:10px ;
 }
+
+
 .cast{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  gap: 10px;
   width: 80;
   height: 115px;
   color: #8D8D8D;
-  justify-content: space-between;
-  margin: 24px 0;
+  margin: 24px 0px;
+  overflow: hidden;
 }
 .heart1{
   display: flex;
@@ -227,13 +226,8 @@ form {
 }
 
 @media screen and (max-width: 960px){
-  .trailer{
-    width: 100%;
-  }
-  .trailer1{
-    width: 95%;
-  }
-  .bannertext img{
+  
+  nnertext img{
     width: 75%;
     height: 75%;
   }
@@ -254,34 +248,7 @@ form {
       margin: 5px 0;
      
   }
-  .trailer{
-    display: flex;
-    flex-direction: row;
-    width:100%;
-    height: auto;
-    color: #8D8D8D;
-    align-items: top;
-    justify-content: space-between;
-    margin: 24px 0;
-    margin-right: 20px;
-  } 
-  
-  .trailer1{
-    display: flex;
-    flex-direction: column;
-    width:95%;
-    height: auto;
-    color: #8E8E8E;
-    align-items: top;
-    background-color: #2A2A2B;
-    justify-content: space-between;
-    border-radius: 10px;
-    text-wrap:auto;
-    margin: 24px 0px;
-   
-    
-    
-  }
+ 
   .bannertext img{
     width: 40%;
     height: 40%;

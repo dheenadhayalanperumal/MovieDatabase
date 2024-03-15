@@ -2,7 +2,7 @@
 import { createStore } from 'redux';
 
 const initialState = {
-  movieId: null,
+  movieId: 1,
 };
 
 function rootReducer(state = initialState, action) {

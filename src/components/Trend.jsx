@@ -6,6 +6,7 @@ import { Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
 import Skeleton from '@mui/material/Skeleton';
 import Card from '@mui/material/Card';
+import { Link, NavLink } from "react-router-dom";
 
 
 
@@ -85,7 +86,7 @@ const Trend = () => {
           <div className="seeall">
         <div>
       <Typography>
-        <h6 className="title">Today Trend</h6>
+        <h6 className="title"> Today Trend</h6>
       </Typography>
       </div>
       <div><p>See All</p></div>
@@ -93,9 +94,11 @@ const Trend = () => {
         
           <div id="Trend" className="scroll">
             {trend?.results?.map((movie) => (
+              <Link to={`/movie/${movie.id}`}>
               <div className="cardMovie" key={movie.id}>
                 <MovieCard  data={movie} onClick={handleMovieClick} />
               </div>
+              </Link>
             ))}
           </div>
 
