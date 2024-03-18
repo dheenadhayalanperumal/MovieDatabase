@@ -34,17 +34,11 @@ useEffect(() => {
         });
 }, []);
 
-  if (loading)
+if (loading)
   return (
-    <Grid container spacing={3}>
-      {[...Array(12)].map((_, index) => (
-        <Grid item xs={6} sm={4} md={3} lg={2} key={index}>
-          <Skeleton variant="rectangular" width="100%" height={200} />
-          <Skeleton variant="text" />
-          <Skeleton variant="text" />
-        </Grid>
-      ))}
-    </Grid>
+    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <CircularProgress />
+    </Box>
   );
 
   return (
