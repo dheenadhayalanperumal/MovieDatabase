@@ -43,10 +43,12 @@ const Slider1 = () => {
   }
 
   const handlePlay = () => {
-   setIsPlaying(true);
+    window.location.href = "/movie/475557";
+  //  setIsPlaying(true);
  };
 
   return (
+    <div className="SliderH">
     <div style={{ display: "flex", justifyContent: "center", color: "white" }}>
       <img src={Banner} alt="banner" width={"100%"} height={"100%"} />
       <div className="bannertext">
@@ -59,24 +61,8 @@ const Slider1 = () => {
           </Typography>
         </div>
       </div>
-      {isPlaying && (
-      <>
-        <IconButton
-          style={{ position: 'absolute', top: '10px', right: '10px', zIndex: 2, color: 'white' }}
-          onClick={() => setIsPlaying(false)}
-        >
-          <CloseIcon />
-        </IconButton>
-        <iframe
-          style={{ position: 'absolute', top: '0', left: '0', width: '100%', height: '720px', zIndex: 1 }}
-          src="https://www.youtube.com/embed/zAGVQLHvwOY?si=QLVEcW6DwV_i28YE"
-          title="YouTube video player"
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullScreen
-        ></iframe>
-      </>
-    )}
+    
+    </div>
     </div>
   );
 };
