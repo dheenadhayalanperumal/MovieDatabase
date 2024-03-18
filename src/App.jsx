@@ -10,6 +10,9 @@ import store from './store';
 import NowPlay from './components/NowPlaying';
 import Dashboard from './components/Dashboard';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import  PopularMovAll from './components/PopularMovAll';
+import NowPlayA from './components/NowplayingAll';
+import TrendAll from './components/TrendAll';
 
 
 
@@ -24,12 +27,16 @@ function App() {
        
           <NavBar />
           
+          
           <Routes>
             <Route path="/" element={<Dashboard />} />
             <Route path="/popular" element={<PopularMov />} />
             <Route path="/now-playing" element={<NowPlay />} />
             <Route path="/movie/:id" element={<Moviedetails />} />
-          </Routes>
+            <Route path="/PopularA" element={< PopularMovAll/>} />
+            <Route path='/nowplay' element={<NowPlayA />} />
+            <Route path="/trend" element={<TrendAll />} />
+          </Routes> 
          
           
       

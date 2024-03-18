@@ -89,7 +89,8 @@ const Trend = () => {
         <h6 className="title"> Today Trend</h6>
       </Typography>
       </div>
-      <div><p>See All</p></div>
+      <div><p>
+        <NavLink to={"/trend"}>See All</NavLink> </p></div>
       </div>
         
           <div id="Trend" className="scroll">

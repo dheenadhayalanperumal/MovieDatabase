@@ -301,3 +301,24 @@ form {
 }
 
 
+.Link a{
+  text-decoration: none;
+}
+.seeall a{
+  text-decoration: none;
+  color: #8D8D8D;
+}
+
+#navbar ul li a:hover {
+  color: #fff;
+  background-color: #8D8D8D;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+
+}
+#navbar ul li a.active {
+  color: #ffffff;
+  background-color: #F6C703;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}

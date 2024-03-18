@@ -4,9 +4,10 @@ import MovieCard from "./MovieCard";
 import fetchData from "../api/Apicall";
 import { Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
-import Slider from "react-slick";
+import NowPlayA from "./NowplayingAll";
 import "../App.css";
 import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -99,7 +100,8 @@ const NowPlay = () => {
         <h6 className="title"> Now Playing Movies</h6>
       </Typography>
       </div>
-      <div><p>See All</p></div>
+      <div><p>
+        <NavLink to={"/nowplay"}> See All</NavLink></p></div>
       </div>
     
 
@@ -107,7 +109,7 @@ const NowPlay = () => {
         
         {data?.results?.map((movie) => (
           <Link to={`/movie/${movie.id}`}>
-          <div className="cardMovie" key={movie.id}>
+          <div  key={movie.id}>
             <MovieCard data={movie} onClick={handleMovieClick}/>
           </div>
           </Link>

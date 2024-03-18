@@ -5,7 +5,7 @@ import PopularMovie from "../api/Popular";
 import { Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
 import "../App.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const PopularMov = () => {
   const [data, setData] = useState([]);
@@ -73,13 +73,17 @@ const PopularMov = () => {
     <div>
 
 <div className="seeall">
-        <div>
-      <Typography>
-        <h6 className="title"> Popular Movies</h6>
-      </Typography>
-      </div>
-      <div><p>See All</p></div>
-      </div>
+  <div>
+    <Typography>
+      <h6 className="title"> Popular Movies</h6>
+    </Typography>
+  </div>
+  <div>
+    <p>
+      <NavLink to={"/PopularA"}> See All </NavLink>
+    </p>
+  </div>
+</div>
      
       <div id="scrollablePopular" className="scroll">
         {data?.results?.map((movie) => (

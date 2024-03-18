@@ -5,6 +5,7 @@ import { Input } from "@mui/material";
 import "../App.css"
 import logo from "../image/logo.png";
 import { Link, NavLink } from "react-router-dom";
+import NowPlayA from "./NowplayingAll";
 
 const NavBar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -27,8 +28,10 @@ return (
                     <div id="navbar">
                     <ul>
                             <li><NavLink to={"/"}>Home</NavLink></li>
-                            <li><NavLink to={"/"}>Movies</NavLink></li>
-                            <li><NavLink to={"/"}>TV Shows</NavLink></li>
+                            <li><NavLink to={"/trend"}>Today Trend</NavLink></li>
+                            <li><NavLink to={"/nowplay"}>Now Playing</NavLink></li>
+                            <li><NavLink to={"/PopularA"}>Popular Movie</NavLink></li>
+                            
                       <li>
                             <Input sx={{ color: 'white'}}
                                 value={search}

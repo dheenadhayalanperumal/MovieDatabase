@@ -13,6 +13,8 @@ import MovieID from "../api/MovieId";
 import Video from "../api/Videos";
 import {useParams} from "react-router-dom";
 import Credit from "../api/Credit";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 
@@ -24,6 +26,8 @@ const Moviedetails = () => {
   const [video, setVideo] = useState([]);
   const [credit, setCredit] = useState([]);
   const { id } = useParams();
+  const [loading, setLoading] = useState(false);
+  
 
   useEffect(() => {
     const addEventListeners = (id) => {
@@ -58,24 +62,31 @@ const Moviedetails = () => {
     addEventListeners("castscroll");
   }, []);
   useEffect(() => {
+    
     MovieID(id)
       .then((response) => {
         setTreand(response.data);
+        
         console.log(response.data);
       })
       .catch((error) => {
         setError("An error occurred while fetching data");
+        
       });
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     Video(id)
       .then((response) => {
         setVideo(response.data);
+        setLoading(false);
         console.log(response.data);
+        
       })
       .catch((error) => {
         setError("An error occurred while fetching data");
+        setLoading(false);
       });
   }, []);
   useEffect(() => {
@@ -88,10 +99,19 @@ const Moviedetails = () => {
         setError("An error occurred while fetching data");
       });
   }, []);
+  
+
+  if (loading)
+    return (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+        <CircularProgress />
+      </Box>
+    );
     
 
   return (
     <div>
+      
       {/* <Typography variant="h6" component="div" sx={{ color: '#FFFFFF' }}>
         {movieId}
       </Typography> */}
@@ -203,7 +223,6 @@ const Moviedetails = () => {
         </div>
       </div>
       
-      <NowPlay />
 
     </div>
   );
