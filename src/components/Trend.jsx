@@ -7,6 +7,9 @@ import { useDispatch } from 'react-redux';
 import Skeleton from '@mui/material/Skeleton';
 import Card from '@mui/material/Card';
 import { Link, NavLink } from "react-router-dom";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { useRef } from "react";
 
 
 
@@ -18,14 +21,22 @@ const Trend = () => {
 
     
 
-
+    const castRef = useRef(null);
   const dispatch = useDispatch();
 
   const handleMovieClick = (id) => {
     dispatch({ type: 'SET_MOVIE_ID', payload: id });
   };
 
+  
 
+  const castscroll = (direction) => {
+    if (direction === "left") {
+      castRef.current.scrollLeft -= 400;
+    } else {
+      castRef.current.scrollLeft += 400;
+    }
+  };
 
 
   useEffect(() => {
@@ -41,6 +52,8 @@ const Trend = () => {
         setLoading(false);
       });
   },[]);
+
+
 
   useEffect(() => {
     const addEventListeners = (id) => {
@@ -92,8 +105,13 @@ const Trend = () => {
       <div><p>
         <NavLink to={"/trend"}>See All</NavLink> </p></div>
       </div>
-        
-          <div id="Trend" className="scroll">
+        <div className="avatarS">
+        <div>
+              <button className="left"
+                         onClick={() => castscroll("left")}><ArrowLeftIcon sx={{color:"white"}}/></button>
+            </div>
+          <div id="Trend" className="scroll"   ref={castRef}
+              >
             {trend?.results?.map((movie) => (
               <Link to={`/movie/${movie.id}`}>
               <div className="cardMovie" key={movie.id}>
@@ -101,6 +119,10 @@ const Trend = () => {
               </div>
               </Link>
             ))}
+          </div>
+          <div>
+              <button  className="left" onClick={() => castscroll("right")}><ArrowRightIcon sx={{color:"white"}}/></button>
+            </div>
           </div>
 
           </div>

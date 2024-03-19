@@ -6,15 +6,29 @@ import { Typography } from "@mui/material";
 import { useDispatch } from 'react-redux';
 import "../App.css";
 import { Link, NavLink } from "react-router-dom";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { useRef } from "react";
+
 
 const PopularMov = () => {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const castRef = useRef(null);
+
 
   const dispatch = useDispatch();
 
   const handleMovieClick = (id) => {
     dispatch({ type: 'SET_MOVIE_ID', payload: id });
+  };
+
+  const castscroll = (direction) => {
+    if (direction === "left") {
+      castRef.current.scrollLeft -= 400;
+    } else {
+      castRef.current.scrollLeft += 400;
+    }
   };
 
   useEffect(() => {
@@ -84,6 +98,11 @@ const PopularMov = () => {
     </p>
   </div>
 </div>
+<div className="avatarS">
+<div>
+              <button className="left"
+                         onClick={() => castscroll("left")}><ArrowLeftIcon sx={{color:"white"}}/></button>
+            </div>
      
       <div id="scrollablePopular" className="scroll">
         {data?.results?.map((movie) => (
@@ -93,6 +112,11 @@ const PopularMov = () => {
           </div>
           </Link>
         ))}
+      </div>
+      <div>
+              <button  className="left" onClick={() => castscroll("right")}><ArrowRightIcon sx={{color:"white"}}/></button>
+            </div>
+
       </div>
     </div>
   );

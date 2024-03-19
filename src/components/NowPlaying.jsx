@@ -8,6 +8,10 @@ import NowPlayA from "./NowplayingAll";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import { useRef } from "react";
+
 
 
 
@@ -19,9 +23,18 @@ const NowPlay = () => {
   const [error, setError] = useState(null);
 
   const dispatch = useDispatch();
+  const castRef = useRef(null);
 
   const handleMovieClick = (id) => {
     dispatch({ type: 'SET_MOVIE_ID', payload: id });
+  };
+
+  const castscroll = (direction) => {
+    if (direction === "left") {
+      castRef.current.scrollLeft -= 400;
+    } else {
+      castRef.current.scrollLeft += 400;
+    }
   };
 
   useEffect(() => {
@@ -103,9 +116,13 @@ const NowPlay = () => {
       <div><p>
         <NavLink to={"/nowplay"}> See All</NavLink></p></div>
       </div>
-    
+      <div className="avatarS">
+      <div>
+              <button className="left"
+                         onClick={() => castscroll("left")}><ArrowLeftIcon sx={{color:"white"}}/></button>
+            </div>
 
-      <div id="scrollableNowPlaying" className="scroll">
+      <div id="scrollableNowPlaying" className="scroll"  ref={castRef}>
         
         {data?.results?.map((movie) => (
           <Link to={`/movie/${movie.id}`}>
@@ -115,6 +132,10 @@ const NowPlay = () => {
           </Link>
           ))}
        
+      </div>
+      <div>
+              <button  className="left" onClick={() => castscroll("right")}><ArrowRightIcon sx={{color:"white"}}/></button>
+            </div>
       </div>
      
     </div>

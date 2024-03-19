@@ -336,3 +336,15 @@ form {
 }
 
 
+.avatarS{
+  display: flex;
+  flex-direction: row;
+ align-items: center;
+ gap: 0px;
+ 
+}
+
+.left{
+  background-color: transparent;
+border: none;
+}
