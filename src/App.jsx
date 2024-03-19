@@ -13,8 +13,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import  PopularMovAll from './components/PopularMovAll';
 import NowPlayA from './components/NowplayingAll';
 import TrendAll from './components/TrendAll';
-
-
+import SearchRes from './components/SearchResult';
 
 
 
@@ -36,6 +35,7 @@ function App() {
             <Route path="/PopularA" element={< PopularMovAll/>} />
             <Route path='/nowplay' element={<NowPlayA />} />
             <Route path="/trend" element={<TrendAll />} />
+            <Route path="/search/:query" element={< SearchRes/>} />
           </Routes> 
          
           

@@ -1,14 +1,9 @@
 import { useEffect, useState } from "react";
-import TodayTrend from "../api/TodayTrend";
 import "../App.css";
-import { useSelector } from "react-redux";
-import banner from "../image/banner.png";
 import { Typography } from "@mui/material";
 import { Grid } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
-import NowPlay from "./NowPlaying";
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import play from "../image/play.png";
 import MovieID from "../api/MovieId";
 import Video from "../api/Videos";
 import {useParams} from "react-router-dom";
@@ -20,7 +15,6 @@ import Credit from "../api/Credit";
 const Moviedetails = () => {
   const [error, setError] = useState(null);
   const [trend, setTreand] = useState([]);
-  const movieId = useSelector((state) => state.movieId);
   const [video, setVideo] = useState([]);
   const [credit, setCredit] = useState([]);
   const { id } = useParams();
@@ -46,7 +40,7 @@ const Moviedetails = () => {
   
       const move = (e) => {
         if (!isDown) return;
-        e.preventDefault();
+       
         const x = e.pageX - slider.offsetLeft;
         const walk = (x - startX) * 3; //scroll-fast
         slider.scrollLeft = scrollLeft - walk;
@@ -76,7 +70,7 @@ const Moviedetails = () => {
       .catch((error) => {
         setError("An error occurred while fetching data");
       });
-  }, []);
+  });
 
   useEffect(() => {
     Video(id)
@@ -87,7 +81,7 @@ const Moviedetails = () => {
       .catch((error) => {
         setError("An error occurred while fetching data");
       });
-  }, []);
+  });
   useEffect(() => {
     Credit(id)
       .then((response) => {
@@ -97,7 +91,7 @@ const Moviedetails = () => {
       .catch((error) => {
         setError("An error occurred while fetching data");
       });
-  }, []);
+  });
 
 
   return (

@@ -6,8 +6,10 @@ import "../App.css"
 import logo from "../image/logo.png";
 import { Link, NavLink } from "react-router-dom";
 import NowPlayA from "./NowplayingAll";
+import { useNavigate } from 'react-router-dom';
 
 const NavBar = () => {
+  const navigate = useNavigate();
   const [showMenu, setShowMenu] = useState(false);
   const [search, setSearch] = useState('');
 
@@ -17,6 +19,7 @@ const NavBar = () => {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
+    navigate(`/search/${search}`);
     console.log(search); // Replace this with your search function
   };
 
@@ -36,6 +39,7 @@ const NavBar = () => {
               <Input sx={{ color: 'white'}}
                 value={search}
                 onChange={handleSearchChange}
+                onClick={handleSearchSubmit}
                 placeholder="Search..."
                 endAdornment={
                   <FontAwesomeIcon icon={faSearch} />

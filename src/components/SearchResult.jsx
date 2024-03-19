@@ -8,7 +8,7 @@ import "../App.css";
 import { CircularProgress, Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 
-const PopularMovAll = () => {
+const SearchRes = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
@@ -67,4 +67,4 @@ const PopularMovAll = () => {
 
 
 
-export default PopularMovAll;
+export default SearchRes;
