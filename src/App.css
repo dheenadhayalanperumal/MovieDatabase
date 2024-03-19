@@ -213,8 +213,9 @@ form {
   width: 80;
   height: 115px;
   color: #8D8D8D;
-  margin: 24px 0px;
   overflow: hidden;
+  padding: 20px;
+  scroll-behavior: smooth;
 }
 .heart1{
   display: flex;
@@ -348,3 +349,4 @@ form {
   background-color: transparent;
 border: none;
 }
+
