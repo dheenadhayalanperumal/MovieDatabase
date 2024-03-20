@@ -1,9 +1,5 @@
 import React from 'react';
 import PopularMov from './components/PopularMov';
-import NavBar from './components/NavBar';
-import Trend from './components/Trend';
-import { Divider} from '@mui/material';
-import Slider1 from './components/Slider1';
 import Moviedetails from './components/Moviedetails';
 import { Provider } from 'react-redux';
 import store from './store';
@@ -14,6 +10,7 @@ import  PopularMovAll from './components/PopularMovAll';
 import NowPlayA from './components/NowplayingAll';
 import TrendAll from './components/TrendAll';
 import SearchRes from './components/SearchResult';
+import DrawerAppBar from './components/NavBar';
 
 
 
@@ -24,8 +21,8 @@ function App() {
     <div className="App">
       <Provider store={store}>
        
-          <NavBar />
-          
+          {/* <NavBar /> */}
+         <DrawerAppBar/> 
           
           <Routes>
             <Route path="/" element={<Dashboard />} />

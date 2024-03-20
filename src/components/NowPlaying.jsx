@@ -3,20 +3,18 @@ import { useEffect, useState } from "react";
 import MovieCard from "./MovieCard";
 import fetchData from "../api/Apicall";
 import { Typography } from "@mui/material";
-import { useDispatch } from 'react-redux';
-import NowPlayA from "./NowplayingAll";
+import { useDispatch } from "react-redux";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import ArrowLeftIcon from '@mui/icons-material/ArrowLeft';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { useRef } from "react";
-
-
-
+import { Box } from "@mui/material";
 
 const NowPlay = () => {
   const [slidesToShow, setSlidesToShow] = useState(6);
+  
 
   const [data, setData] = useState([]);
 
@@ -26,7 +24,7 @@ const NowPlay = () => {
   const castRef = useRef(null);
 
   const handleMovieClick = (id) => {
-    dispatch({ type: 'SET_MOVIE_ID', payload: id });
+    dispatch({ type: "SET_MOVIE_ID", payload: id });
   };
 
   const castscroll = (direction) => {
@@ -42,25 +40,22 @@ const NowPlay = () => {
       setSlidesToShow(Math.floor(window.innerWidth / 192)); // 200 is approx width of a slide
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     handleResize(); // Call the function initially to set the state based on the initial window size
 
-    return () => window.removeEventListener('resize', handleResize); // Clean up the event listener on unmount
+    return () => window.removeEventListener("resize", handleResize); // Clean up the event listener on unmount
   }, []);
 
-
- 
-
   useEffect(() => {
-   
     fetchData()
       .then((response) => {
         setData(response.data);
       })
       .catch((error) => {
-        setError("An error occurred while fetching data");
-        
+        setError(
+          "An error occurred while fetching data using Jio Network. Please try again later."
+        );
       });
   }, []);
 
@@ -100,7 +95,19 @@ const NowPlay = () => {
   if (error) {
     return (
       <div>
-        <h1>{error}</h1>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+          }}
+        >
+          <Typography variant="h5" component="h2">
+            {" "}
+            {error}
+          </Typography>
+        </Box>
       </div>
     );
   }
@@ -109,35 +116,46 @@ const NowPlay = () => {
     <div>
       <div className="seeall">
         <div>
-      <Typography>
-        <h6 className="title"> Now Playing Movies</h6>
-      </Typography>
-      </div>
-      <div><p>
-        <NavLink to={"/nowplay"}> See All</NavLink></p></div>
+          <Typography>
+            <h6 className="title"> Now Playing Movies</h6>
+          </Typography>
+        </div>
+        <div>
+          <p>
+            <NavLink to={"/nowplay"}> See All</NavLink>
+          </p>
+        </div>
       </div>
       <div className="avatarS">
-      <div>
-              <button className="left"
-                         onClick={() => castscroll("left")}><ArrowLeftIcon sx={{color:"white"}}/></button>
-            </div>
-
-      <div id="scrollableNowPlaying" className="scroll"  ref={castRef}>
-        
-        {data?.results?.map((movie) => (
-          <Link to={`/movie/${movie.id}`}>
-          <div  key={movie.id}>
-            <MovieCard data={movie} onClick={handleMovieClick}/>
+        <div>
+        {window.innerWidth > 600 && (
+          <div>
+            <button className="left" onClick={() => castscroll("left")}>
+              <ArrowLeftIcon sx={{ color: "white" }} />
+            </button>
           </div>
-          </Link>
+        )}
+        </div>
+
+        <div id="scrollableNowPlaying" className="scroll" ref={castRef}>
+          {data?.results?.map((movie) => (
+            <Link to={`/movie/${movie.id}`}>
+              <div key={movie.id}>
+                <MovieCard data={movie} onClick={handleMovieClick} />
+              </div>
+            </Link>
           ))}
-       
+        </div>
+        <div>
+        {window.innerWidth > 600 && (
+          <div>
+            <button className="left" onClick={() => castscroll("right")}>
+              <ArrowRightIcon sx={{ color: "white" }} />
+            </button>
+          </div>
+        )}
+        </div>
       </div>
-      <div>
-              <button  className="left" onClick={() => castscroll("right")}><ArrowRightIcon sx={{color:"white"}}/></button>
-            </div>
-      </div>
-     
     </div>
   );
 };

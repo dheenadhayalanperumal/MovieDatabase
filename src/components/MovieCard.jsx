@@ -12,7 +12,7 @@ const MovieCard = ({ data, onClick }) => {
         <div onClick={() => onClick(data.id)}>
         
 
-                        <Card sx={{ width:192, marginLeft: 'auto', marginRight: 'auto' }}>
+                        <Card sx={{ width: { xs: 130, sm: 192 }, marginLeft: 'auto', marginRight: 'auto' }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
