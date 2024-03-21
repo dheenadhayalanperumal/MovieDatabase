@@ -12,7 +12,7 @@ const MovieCard = ({ data, onClick }) => {
         <div onClick={() => onClick(data.id)}>
         
 
-                        <Card sx={{ width: { xs: 130, sm: 192 }, marginLeft: 'auto', marginRight: 'auto' }}>
+                        <Card sx={{ width: { xs: 160, sm: 192 }, marginLeft: 'auto', marginRight: 'auto' }}>
                 <CardActionArea>
                     <CardMedia
                         component="img"
@@ -25,8 +25,8 @@ const MovieCard = ({ data, onClick }) => {
                         <Typography gutterBottom variant="h7" component="div" sx={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                             {data.title || data.original_name}
                         </Typography>
-                        <Typography variant="body1" sx={{ color: '#8D8D8D' }}>
-                            <FaRegStar /> {data.vote_average} ({data.vote_count})
+                        <Typography variant="body3" sx={{ color: '#8D8D8D' }}>
+                            <FaRegStar /> {data.vote_average.toFixed(2)} ({data.vote_count})
                         </Typography>
                     </CardContent>
                 </CardActionArea>

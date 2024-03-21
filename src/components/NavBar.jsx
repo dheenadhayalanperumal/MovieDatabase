@@ -24,7 +24,7 @@ import logo from "../image/dheena.png";
 
 
 
-const drawerWidth = 240;
+const drawerWidth = 220;
 const navLinks = [
     { path: "/", text: "Home" },
   { path: "/PopularA", text: "Popular Movies" },
@@ -32,12 +32,22 @@ const navLinks = [
   { path: "/nowplay", text: "Now Playing" },
 ];
 
+
 function DrawerAppBar(props) {
   
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mouseDown, setMouseDown] = useState(false);
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+
+  const handleMouseDown = () => {
+    setMouseDown(true);
+  };
+
+  const handleMouseUp = () => {
+    setMouseDown(false);
+  };
 
   const handleSearchChange = (event) => {
     setSearch(event.target.value);
@@ -59,7 +69,7 @@ function DrawerAppBar(props) {
         <ListItemText>
           <NavLink
             to={path}
-            style={{ textDecoration: "none", color: "#000" }}
+            style={{ textDecoration: "none", color: "#fff"}}
           >
             {text}
           </NavLink>
@@ -122,8 +132,10 @@ return (
                         endAdornment={<FontAwesomeIcon icon={faSearch} />}
                     />
                 </form>
-                <Box sx={{ display: { xs: "none", sm: "block" } }}>
-                    <Button>
+                <Box sx={{ display: { xs: "none", sm: "flex" } }}>
+                    <Button  style={{backgroundColor: mouseDown ? 'red' : 'black'}}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}>
                         <NavLink
                             to={"/PopularA"}
                             style={{ textDecoration: "none", color: "#fff" }}
@@ -132,7 +144,9 @@ return (
                         </NavLink>
                     </Button>
 
-                    <Button sx={{ color: "#fff", textDecoration: "none" }}>
+                    <Button  style={{backgroundColor: mouseDown ? 'red' : 'black'}}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}>
                         <NavLink
                             to={"/trend"}
                             style={{ textDecoration: "none", color: "#fff" }}
@@ -140,7 +154,9 @@ return (
                             Trending
                         </NavLink>
                     </Button>
-                    <Button sx={{ color: "#fff", textDecoration: "none" }}>
+                    <Button style={{backgroundColor: mouseDown ? 'red' : 'black'}}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}>
                         <NavLink
                             to={"/nowplay"}
                             style={{ textDecoration: "none", color: "#fff" }}
@@ -165,6 +181,7 @@ return (
                     "& .MuiDrawer-paper": {
                         boxSizing: "border-box",
                         width: drawerWidth,
+                        backgroundColor: "black"
                     },
                 }}
             >
@@ -189,3 +206,5 @@ DrawerAppBar.propTypes = {
 };
 
 export default DrawerAppBar;
+
+

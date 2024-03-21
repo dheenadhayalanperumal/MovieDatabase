@@ -100,7 +100,7 @@ const NowPlay = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            height: "100vh",
+          
           }}
         >
           <Typography variant="h5" component="h2">

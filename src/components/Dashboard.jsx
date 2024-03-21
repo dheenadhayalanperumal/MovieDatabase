@@ -9,6 +9,7 @@ import Box from '@mui/material/Box';
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
 
+
   useEffect(() => {
     // Simulate a network request
     setTimeout(() => {
