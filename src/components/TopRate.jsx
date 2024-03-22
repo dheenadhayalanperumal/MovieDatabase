@@ -74,7 +74,7 @@ const TopRate = () => {
       });
     };
 
-    addEventListeners("Trend");
+    addEventListeners("Toprate");
   }, []);
 
   if (error) {
@@ -101,7 +101,7 @@ const TopRate = () => {
       <div className="seeall">
         <div>
           <Typography>
-            <h6 className="title"> Today Trend</h6>
+            <h6 className="title"> Today Rated</h6>
           </Typography>
         </div>
         <div>
@@ -118,7 +118,7 @@ const TopRate = () => {
             </button>
           </div>
         )}
-        <div id="Trend" className="scroll" ref={castRef}>
+        <div id="Toprate" className="scroll" ref={castRef}>
           {trend?.results?.map((movie) => (
             <Link to={`/movie/${movie.id}`}>
               <div className="cardMovie" key={movie.id}>
