@@ -11,6 +11,7 @@ import NowPlayA from './components/NowplayingAll';
 import TrendAll from './components/TrendAll';
 import SearchRes from './components/SearchResult';
 import DrawerAppBar from './components/NavBar';
+import TopRateAll from './components/TopratedAll';
 
 
 
@@ -33,6 +34,8 @@ function App() {
             <Route path='/nowplay' element={<NowPlayA />} />
             <Route path="/trend" element={<TrendAll />} />
             <Route path="/search/:query" element={< SearchRes/>} />
+            <Route path="/toprated" element={<TopRateAll />} />
+
           </Routes> 
          
           

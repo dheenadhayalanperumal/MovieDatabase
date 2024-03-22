@@ -7,8 +7,7 @@ import Banner from "../image/banner.png";
 import bannercontent from "../image/bannerContent.png";
 import play from "../image/play.png";
 import { Typography } from "@mui/material";
-import { IconButton } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
+
 
 const settings = {
   dots: true,

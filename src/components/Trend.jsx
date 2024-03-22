@@ -10,6 +10,7 @@ import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { useRef } from "react";
 import { Box } from "@mui/material";
 
+
 const Trend = () => {
   // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);

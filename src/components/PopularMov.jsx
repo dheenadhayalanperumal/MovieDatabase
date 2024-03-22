@@ -46,7 +46,7 @@ const PopularMov = () => {
   }, []);
 
   useEffect(() => {
-    PopularMovie()
+    PopularMovie(1)
       .then((response) => {
         setData(response.data);
       })

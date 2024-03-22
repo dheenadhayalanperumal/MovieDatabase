@@ -28,7 +28,7 @@ const drawerWidth = 220;
 const navLinks = [
     { path: "/", text: "Home" },
   { path: "/PopularA", text: "Popular Movies" },
-  { path: "/trend", text: "Trending Movies" },
+  { path: "/toprated", text: "Top Rated" },
   { path: "/nowplay", text: "Now Playing" },
 ];
 
@@ -148,10 +148,10 @@ return (
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}>
                         <NavLink
-                            to={"/trend"}
+                            to={"/toprated"}
                             style={{ textDecoration: "none", color: "#fff" }}
                         >
-                            Trending
+                            Top Rated
                         </NavLink>
                     </Button>
                     <Button style={{backgroundColor: mouseDown ? 'red' : 'black'}}

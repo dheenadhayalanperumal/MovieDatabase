@@ -5,6 +5,7 @@ import Trend from "./Trend";
 import PopularMov from "./PopularMov";
 import NowPlay from "./NowPlaying";
 import Box from '@mui/material/Box';
+import TopRate from "./TopRate";
 
 const Dashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,7 +29,9 @@ const Dashboard = () => {
       <Slider1 />
       <Trend />
       <NowPlay />
+      <TopRate />
       <PopularMov />
+    
     </div>
   );
 };
