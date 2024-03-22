@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { Grid, Item } from "@mui/material";
 import "../App.css";
 import { CircularProgress, Box } from "@mui/material";
+import { Typography } from "@mui/material";
 
 const TrendAll = () => {
   const [data, setData] = useState([]);
@@ -44,6 +45,9 @@ const TrendAll = () => {
 
 
     <div>
+      <Typography variant="h4" sx={{ color: "#8D8D8D", marginBottom: 2, textAlign: "center" }}>
+       Today Trend Movies
+      </Typography>
         <Grid container spacing={1} >
  {
         data.map((movie) => {

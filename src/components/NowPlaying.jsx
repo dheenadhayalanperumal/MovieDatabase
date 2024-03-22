@@ -34,7 +34,6 @@ const NowPlay = () => {
       castRef.current.scrollLeft += 400;
     }
   };
-
   useEffect(() => {
     const handleResize = () => {
       setSlidesToShow(Math.floor(window.innerWidth / 192)); // 200 is approx width of a slide

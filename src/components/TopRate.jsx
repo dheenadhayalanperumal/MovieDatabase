@@ -15,6 +15,7 @@ const TopRate = () => {
   // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [trend, setTreand] = useState([]);
+  const [slidesToShow, setSlidesToShow] = useState(6);
  
 
   const castRef = useRef(null);
@@ -31,6 +32,18 @@ const TopRate = () => {
       castRef.current.scrollLeft += 400;
     }
   };
+  useEffect(() => {
+    const handleResize = () => {
+      setSlidesToShow(Math.floor(window.innerWidth / 192)); // 200 is approx width of a slide
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize(); // Call the function initially to set the state based on the initial window size
+
+    return () => window.removeEventListener("resize", handleResize); // Clean up the event listener on unmount
+  }, []);
+
 
   useEffect(() => {
     Toprate(1)
