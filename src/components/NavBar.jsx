@@ -57,6 +57,7 @@ function DrawerAppBar(props) {
     event.preventDefault();
     navigate(`/search/${search}`);
     setSearch('')
+   
   };
 
   const handleDrawerToggle = () => {
