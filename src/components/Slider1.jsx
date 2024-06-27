@@ -1,4 +1,4 @@
-import Slider from "react-slick";
+
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import TodayTrend from "../api/TodayTrend";
@@ -9,22 +9,12 @@ import play from "../image/play.png";
 import { Typography } from "@mui/material";
 
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  centerMode: true,
-  variableWidth: true,
-  swipeToSlide: true,
-  edgeFriction: 0.15,
-};
+
 
 const Slider1 = () => {
   const [trend, setTreand] = useState([]);
   const [error, setError] = useState(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+ 
 
   useEffect(() => {
     TodayTrend()

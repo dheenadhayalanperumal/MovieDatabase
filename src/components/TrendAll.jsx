@@ -3,7 +3,7 @@ import TodayTrend from "../api/TodayTrend";
 import MovieCard from "./MovieCard";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { Grid, Item } from "@mui/material";
+import { Grid } from "@mui/material";
 import "../App.css";
 import { CircularProgress, Box } from "@mui/material";
 import { Typography } from "@mui/material";
