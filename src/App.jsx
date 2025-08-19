@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import NowPlay from './components/NowPlaying';
 import Dashboard from './components/Dashboard';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import  PopularMovAll from './components/PopularMovAll';
 import NowPlayA from './components/NowplayingAll';
 import TrendAll from './components/TrendAll';

@@ -13,7 +13,7 @@ import Credit from "../api/Credit";
 
 
 const Moviedetails = () => {
-  const [error, setError] = useState(null);
+  const [, setError] = useState(null);
   const [trend, setTreand] = useState([]);
   const [video, setVideo] = useState([]);
   const [credit, setCredit] = useState([]);

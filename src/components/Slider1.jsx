@@ -12,7 +12,7 @@ import { Typography } from "@mui/material";
 
 
 const Slider1 = () => {
-  const [trend, setTreand] = useState([]);
+  const [, setTreand] = useState([]);
   const [error, setError] = useState(null);
  
 

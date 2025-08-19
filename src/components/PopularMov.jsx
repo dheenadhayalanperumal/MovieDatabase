@@ -5,15 +5,14 @@ import { Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import PopularMovie from "../api/Popular";
 import "../App.css";
-import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import { useRef } from "react";
 import { Box } from "@mui/material";
 
 const PopularMov = () => {
-  const [slidesToShow, setSlidesToShow] = useState(6);
+  const [, setSlidesToShow] = useState(6);
 
   const [data, setData] = useState([]);
 

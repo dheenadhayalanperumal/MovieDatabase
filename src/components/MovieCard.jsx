@@ -7,7 +7,7 @@ import { CardActionArea} from '@mui/material';
 import { FaRegStar } from "react-icons/fa";
 
 
-const MovieCard = ({ data, onClick }) => {
+const MovieCard = React.memo(({ data, onClick }) => {
     return (
         <div onClick={() => onClick(data.id)}>
         
@@ -33,6 +33,6 @@ const MovieCard = ({ data, onClick }) => {
             </Card>
         </div>
     );
-}
+});
 
 export default MovieCard;

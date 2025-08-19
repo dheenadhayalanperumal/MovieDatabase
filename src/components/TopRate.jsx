@@ -15,7 +15,7 @@ const TopRate = () => {
   // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [trend, setTreand] = useState([]);
-  const [slidesToShow, setSlidesToShow] = useState(6);
+  const [, setSlidesToShow] = useState(6);
  
 
   const castRef = useRef(null);

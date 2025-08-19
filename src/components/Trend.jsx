@@ -15,8 +15,8 @@ const Trend = () => {
   // const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [trend, setTreand] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [slidesToShow, setSlidesToShow] = useState(6);
+  const [loading] = useState(false);
+  const [, setSlidesToShow] = useState(6);
  
 
   const castRef = useRef(null);

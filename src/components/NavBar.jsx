@@ -110,7 +110,7 @@ function DrawerAppBar(props) {
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
             <Link to={"/"} style={{ textDecoration: "none", color: "#fff" }}>
-              <div><Link to={"/"}><img src={logo} alt="IMDb" height={30} width={'auto'} /></Link></div>
+              <div><img src={logo} alt="IMDb" height={30} width={'auto'} /></div>
             </Link>
           </Typography>
 

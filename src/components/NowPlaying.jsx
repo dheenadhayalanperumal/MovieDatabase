@@ -13,7 +13,7 @@ import { useRef } from "react";
 import { Box } from "@mui/material";
 
 const NowPlay = () => {
-  const [slidesToShow, setSlidesToShow] = useState(6);
+  const [, setSlidesToShow] = useState(6);
   
 
   const [data, setData] = useState([]);
