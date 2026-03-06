@@ -22,8 +22,8 @@ const PopularMovAll = () => {
       try {
         const response = await Popular(page);
         setData((prevData) => [...prevData, ...response.data.results]);
-      } catch (error) {
-        console.error("An error occurred while fetching data:", error);
+      } catch {
+        // Error handled silently
       } finally {
         setLoading(false);
       }
@@ -39,7 +39,10 @@ const PopularMovAll = () => {
       }
     });
 
-    observer.current.observe(document.getElementById("observer"));
+    const observerElement = document.getElementById("observer");
+    if (observerElement) {
+      observer.current.observe(observerElement);
+    }
 
     return () => {
       if (observer.current) {

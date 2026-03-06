@@ -20,7 +20,6 @@ const Slider1 = () => {
     TodayTrend()
       .then((response) => {
         setTreand(response.data);
-        console.log(response.data);
       })
       .catch(() => {
         setError("An error occurred while fetching data");
@@ -33,21 +32,26 @@ const Slider1 = () => {
 
   const handlePlay = () => {
     window.location.href = "/movie/475557";
-  //  setIsPlaying(true);
- };
+  };
 
   return (
     <div className="SliderH">
     <div style={{ display: "flex", justifyContent: "center", color: "white" }}>
-      <img src={Banner} alt="banner" width={"100%"} height={"100%"} />
+      <img src={Banner} alt="Featured movie promotional banner" width={"100%"} height={"100%"} />
       <div className="bannertext">
         <p>#1 in India</p>
-        <img src={bannercontent} alt="banner" />
+        <img src={bannercontent} alt="Joker movie title" />
         <div className="play">
-          <img id="playBu" onClick={handlePlay} src={play} alt="banner" />
-          <Typography variant="h6" ml={1} style={{ color: "white" }}>
-            Watch Trailer
-          </Typography>
+          <button
+            onClick={handlePlay}
+            aria-label="Watch Joker trailer"
+            style={{ background: 'transparent', border: 'none', cursor: 'pointer', padding: 0, display: 'flex', alignItems: 'center' }}
+          >
+            <img src={play} alt="" />
+            <Typography variant="h6" ml={1} style={{ color: "white" }}>
+              Watch Trailer
+            </Typography>
+          </button>
         </div>
       </div>
     

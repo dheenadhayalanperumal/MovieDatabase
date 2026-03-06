@@ -57,36 +57,49 @@ const PopularMov = () => {
   }, []);
 
   useEffect(() => {
-    const addEventListeners = (id) => {
-      const slider = document.getElementById(id);
-      let isDown = false;
-      let startX;
-      let scrollLeft;
+    const slider = document.getElementById("scrollableNowPlaying1");
+    if (!slider) return;
 
-      slider.addEventListener("mousedown", (e) => {
-        isDown = true;
-        slider.classList.add("active");
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-      });
-      slider.addEventListener("mouseleave", () => {
-        isDown = false;
-        slider.classList.remove("active");
-      });
-      slider.addEventListener("mouseup", () => {
-        isDown = false;
-        slider.classList.remove("active");
-      });
-      slider.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 3; //scroll-fast
-        slider.scrollLeft = scrollLeft - walk;
-      });
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const handleMouseDown = (e) => {
+      isDown = true;
+      slider.classList.add("active");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
     };
 
-    addEventListeners("scrollableNowPlaying1");
+    const handleMouseLeave = () => {
+      isDown = false;
+      slider.classList.remove("active");
+    };
+
+    const handleMouseUp = () => {
+      isDown = false;
+      slider.classList.remove("active");
+    };
+
+    const handleMouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 3;
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    slider.addEventListener("mousedown", handleMouseDown);
+    slider.addEventListener("mouseleave", handleMouseLeave);
+    slider.addEventListener("mouseup", handleMouseUp);
+    slider.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      slider.removeEventListener("mousedown", handleMouseDown);
+      slider.removeEventListener("mouseleave", handleMouseLeave);
+      slider.removeEventListener("mouseup", handleMouseUp);
+      slider.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   if (error) {
@@ -125,16 +138,16 @@ const PopularMov = () => {
       <div className="avatarS">
         {window.innerWidth > 600 && (
           <div>
-            <button className="left" onClick={() => castscroll("left")}>
-              <ArrowLeftIcon sx={{ color: "white" }} />
+            <button type="button" className="left" onClick={() => castscroll("left")} aria-label="Scroll left">
+              <ArrowLeftIcon sx={{ color: "white", fontSize: 32 }} />
             </button>
           </div>
         )}
 
         <div id="scrollableNowPlaying1" className="scroll" ref={castRef}>
           {data?.results?.map((movie) => (
-            <Link to={`/movie/${movie.id}`}>
-              <div key={movie.id}>
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <div>
                 <MovieCard data={movie} onClick={handleMovieClick} />
               </div>
             </Link>
@@ -142,8 +155,8 @@ const PopularMov = () => {
         </div>
         {window.innerWidth > 600 && (
           <div>
-            <button className="left" onClick={() => castscroll("right")}>
-              <ArrowRightIcon sx={{ color: "white" }} />
+            <button type="button" className="left" onClick={() => castscroll("right")} aria-label="Scroll right">
+              <ArrowRightIcon sx={{ color: "white", fontSize: 32 }} />
             </button>
           </div>
         )}

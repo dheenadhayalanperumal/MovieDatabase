@@ -22,15 +22,12 @@ const TrendAll = () => {
   useEffect(() => {
     setLoading(true);
     TodayTrend()
-   
       .then((response) => {
-        console.log(response.data);
-        setLoading(false)
+        setLoading(false);
         setData(response.data.results);
       })
-      .catch((error) => {
+      .catch(() => {
         setLoading(false);
-        console.log("An error occurred while fetching data");
       });
   }, []);
   if (loading)
@@ -46,7 +43,7 @@ const TrendAll = () => {
 
     <div>
       <Typography variant="h4" sx={{ color: "#8D8D8D", marginBottom: 2, textAlign: "center" }}>
-       Today Trend Movies
+        Today's Trending Movies
       </Typography>
         <Grid container spacing={1} >
  {
@@ -54,7 +51,7 @@ const TrendAll = () => {
           return (
             <Grid className="Link" item xs={6} sm={4} md={3} lg={2} key={movie.id}>
               <Link to={`/movie/${movie.id}`}>
-                <div className="cardMovie" key={movie.id}>
+                <div className="cardMovie">
                   <MovieCard data={movie} onClick={handleMovieClick} />
                 </div>
               </Link>

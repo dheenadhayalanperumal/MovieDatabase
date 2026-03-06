@@ -58,8 +58,9 @@ const TopRateAll = () => {
       }
     }, options);
 
-    if (observer.current) {
-      observer.current.observe(document.getElementById("observer"));
+    const observerElement = document.getElementById("observer");
+    if (observer.current && observerElement) {
+      observer.current.observe(observerElement);
     }
 
     return () => {
@@ -76,7 +77,7 @@ const TopRateAll = () => {
   return (
     <div>
       <Typography variant="h4" sx={{ color: "#8D8D8D", marginBottom: 2, textAlign: "center" }}>
-        Now Playing Movies
+        Top Rated Movies
       </Typography>
       <Grid container spacing={2}>
         {data.map((movie) => (

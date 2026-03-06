@@ -36,8 +36,8 @@ const NowPlayA = () => {
       try {
         const response = await fetchData(page);
         setData((prevData) => [...prevData, ...response.data.results]);
-      } catch (error) {
-        console.error("An error occurred while fetching data:", error);
+      } catch {
+        // Error handled silently
       } finally {
         setLoading(false);
       }
@@ -59,8 +59,9 @@ const NowPlayA = () => {
       }
     }, options);
 
-    if (observer.current) {
-      observer.current.observe(document.getElementById("observer"));
+    const observerElement = document.getElementById("observer");
+    if (observer.current && observerElement) {
+      observer.current.observe(observerElement);
     }
 
     return () => {

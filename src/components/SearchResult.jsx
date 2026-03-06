@@ -22,15 +22,14 @@ const SearchRes = () => {
 
   useEffect(() => {
     setLoading(true);
-   Search(query)   
+    Search(query)
       .then((response) => {
-        console.log(response.data);
-        setLoading(false)
+        setLoading(false);
         setData(response.data.results);
       })
-      .catch((error) => {
+      .catch(() => {
         setLoading(false);
-        console.log("An error occurred while fetching data");
+        setData([]);
       });
   }, [query]);
 
@@ -47,25 +46,30 @@ const SearchRes = () => {
 
   return (
     <div>
-      <Typography sx={{color:'white'}}>There is no movie available</Typography>
-            {data.length === 0 ? (
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-          <Typography sx={{color:'white'}}>Search Results of {query}</Typography>
-        
+      {data.length === 0 ? (
+        <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', height: '50vh' }}>
+          <Typography variant="h5" sx={{ color: 'white', mb: 2 }}>
+            No results found for "{query}"
+          </Typography>
+          <Typography sx={{ color: '#8D8D8D' }}>
+            Try different keywords or check spelling
+          </Typography>
         </Box>
       ) : (
-        
-        <Grid container spacing={2}>
-         {data.map((movie) => (
-            <Grid className="Link" item xs={6} sm={4} md={3} lg={2} key={movie.id}>
-              <Link to={`/movie/${movie.id}`}>
-                <div key={movie.id}>
+        <>
+          <Typography sx={{ color: 'white', mb: 2 }}>
+            Search Results for "{query}" ({data.length} movies found)
+          </Typography>
+          <Grid container spacing={2}>
+            {data.map((movie) => (
+              <Grid className="Link" item xs={6} sm={4} md={3} lg={2} key={movie.id}>
+                <Link to={`/movie/${movie.id}`}>
                   <MovieCard data={movie} onClick={handleMovieClick} />
-                </div>
-              </Link>
-            </Grid>
-          ))}
-        </Grid>
+                </Link>
+              </Grid>
+            ))}
+          </Grid>
+        </>
       )}
     </div>
   );

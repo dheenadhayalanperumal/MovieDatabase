@@ -347,8 +347,38 @@ form {
  
 }
 
-.left{
-  background-color: transparent;
-border: none;
+.left {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  min-width: 56px;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.left:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.left:active {
+  transform: scale(0.95);
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.left:focus-visible {
+  outline: 2px solid #F6C703;
+  outline-offset: 2px;
+}
+
+.left svg {
+  font-size: 28px;
 }
 

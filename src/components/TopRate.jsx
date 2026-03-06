@@ -50,7 +50,6 @@ const TopRate = () => {
       .then((response) => {
         setTreand(response.data);
 
-        console.log(response.data);
       })
       .catch((error) => {
         setError("An error occurred while fetching data");
@@ -58,36 +57,49 @@ const TopRate = () => {
   }, []);
 
   useEffect(() => {
-    const addEventListeners = (id) => {
-      const slider = document.getElementById(id);
-      let isDown = false;
-      let startX;
-      let scrollLeft;
+    const slider = document.getElementById("Toprate");
+    if (!slider) return;
 
-      slider.addEventListener("mousedown", (e) => {
-        isDown = true;
-        slider.classList.add("active");
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-      });
-      slider.addEventListener("mouseleave", () => {
-        isDown = false;
-        slider.classList.remove("active");
-      });
-      slider.addEventListener("mouseup", () => {
-        isDown = false;
-        slider.classList.remove("active");
-      });
-      slider.addEventListener("mousemove", (e) => {
-        if (!isDown) return;
-        e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 3; //scroll-fast
-        slider.scrollLeft = scrollLeft - walk;
-      });
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const handleMouseDown = (e) => {
+      isDown = true;
+      slider.classList.add("active");
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
     };
 
-    addEventListeners("Toprate");
+    const handleMouseLeave = () => {
+      isDown = false;
+      slider.classList.remove("active");
+    };
+
+    const handleMouseUp = () => {
+      isDown = false;
+      slider.classList.remove("active");
+    };
+
+    const handleMouseMove = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 3;
+      slider.scrollLeft = scrollLeft - walk;
+    };
+
+    slider.addEventListener("mousedown", handleMouseDown);
+    slider.addEventListener("mouseleave", handleMouseLeave);
+    slider.addEventListener("mouseup", handleMouseUp);
+    slider.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      slider.removeEventListener("mousedown", handleMouseDown);
+      slider.removeEventListener("mouseleave", handleMouseLeave);
+      slider.removeEventListener("mouseup", handleMouseUp);
+      slider.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
   if (error) {
@@ -114,7 +126,7 @@ const TopRate = () => {
       <div className="seeall">
         <div>
           <Typography>
-            <h6 className="title"> Today Rated</h6>
+            <h6 className="title">Top Rated</h6>
           </Typography>
         </div>
         <div>
@@ -126,15 +138,15 @@ const TopRate = () => {
       <div className="avatarS">
       {window.innerWidth > 600 && (
           <div>
-            <button className="left" onClick={() => castscroll("left")}>
-              <ArrowLeftIcon sx={{ color: "white" }} />
+            <button type="button" className="left" onClick={() => castscroll("left")} aria-label="Scroll left">
+              <ArrowLeftIcon sx={{ color: "white", fontSize: 32 }} />
             </button>
           </div>
         )}
         <div id="Toprate" className="scroll" ref={castRef}>
           {trend?.results?.map((movie) => (
-            <Link to={`/movie/${movie.id}`}>
-              <div className="cardMovie" key={movie.id}>
+            <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <div className="cardMovie">
                 <MovieCard data={movie} onClick={handleMovieClick} />
               </div>
             </Link>
@@ -143,8 +155,8 @@ const TopRate = () => {
         <div>
         {window.innerWidth > 600 && (
           <div>
-            <button className="left" onClick={() => castscroll("right")}>
-              <ArrowRightIcon sx={{ color: "white" }} />
+            <button type="button" className="left" onClick={() => castscroll("right")} aria-label="Scroll right">
+              <ArrowRightIcon sx={{ color: "white", fontSize: 32 }} />
             </button>
           </div>
         )}

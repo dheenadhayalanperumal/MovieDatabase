@@ -42,8 +42,11 @@ function DrawerAppBar(props) {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    navigate(`/search/${search}`);
-    setSearch('');
+    const trimmedSearch = search.trim();
+    if (trimmedSearch) {
+      navigate(`/search/${encodeURIComponent(trimmedSearch)}`);
+      setSearch('');
+    }
   };
 
   const handleDrawerToggle = () => {
@@ -120,7 +123,15 @@ function DrawerAppBar(props) {
               value={search}
               onChange={handleSearchChange}
               placeholder="Search..."
-              endAdornment={<FontAwesomeIcon icon={faSearch} />}
+              inputProps={{
+                'aria-label': 'Search for movies',
+                type: 'search',
+              }}
+              endAdornment={
+                <IconButton type="submit" aria-label="Submit search" sx={{ color: 'white', p: 0 }}>
+                  <FontAwesomeIcon icon={faSearch} />
+                </IconButton>
+              }
             />
           </form>
 
